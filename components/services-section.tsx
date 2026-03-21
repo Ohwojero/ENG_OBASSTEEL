@@ -1,0 +1,123 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Service } from '@/lib/types'
+import Link from 'next/link'
+
+interface ServicesSectionProps {
+  services: Service[]
+}
+
+export function ServicesSection({ services }: ServicesSectionProps) {
+  const fallbackServices: Service[] = [
+    {
+      id: 'fallback-1',
+      title: 'Flow Station Operations',
+      description: 'Operational support, monitoring, and maintenance for flow stations to keep production stable and safe.',
+      icon_url: null,
+      order: 0,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'fallback-2',
+      title: 'Pipeline & Facility Management',
+      description: 'Inspection, integrity management, and compliance for pipeline networks and facility assets.',
+      icon_url: null,
+      order: 1,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'fallback-3',
+      title: 'Construction & Fabrication',
+      description: 'Fabrication and construction services for industrial structures, skids, and field installations.',
+      icon_url: null,
+      order: 2,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+  ]
+
+  const servicesToShow = services.length > 0 ? services : fallbackServices
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
+            Our <span className="text-accent">Services</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive solutions for your oil and gas operations
+          </p>
+        </motion.div>
+
+        {/* Services Grid (3 featured cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {servicesToShow.slice(0, 3).map((service, idx) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm min-h-[460px]"
+            >
+              <div className="relative h-60 w-full overflow-hidden">
+                <img
+                  src={service.icon_url || (idx === 0 ? '/img3.jpeg' : idx === 1 ? '/img4.jpeg' : '/img5.jpeg')}
+                  alt={service.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent"></div>
+              </div>
+              <div className="relative z-10 p-6">
+                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                  {service.description}
+                </p>
+              </div>
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+              <div className="pointer-events-none absolute -left-12 bottom-20 h-28 w-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+              <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-transparent via-accent/40 to-transparent opacity-60"></div>
+              <div className="absolute left-6 right-6 bottom-6 z-10">
+                <Link href="/services">
+                  <button className="w-full px-4 py-2 text-sm font-semibold rounded-lg border border-accent text-accent bg-transparent opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    View Service
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Link href="/services">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 border-2 border-accent text-accent rounded-lg font-bold transition-all hover:bg-accent/10"
+            >
+              View All Services
+            </motion.button>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
