@@ -1,6 +1,8 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { supabase } from '@/lib/supabase-client'
 import { Testimonial } from '@/lib/types'
 import { TestimonialCard } from './testimonial-card'
 
@@ -9,10 +11,34 @@ interface TestimonialsSectionProps {
 }
 
 export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) {
-  if (testimonials.length === 0) return null
+  const [clientTestimonials, setClientTestimonials] = useState<Testimonial[]>([])
+  const [loading, setLoading] = useState(false)
 
-  const marqueeTestimonials = [...testimonials, ...testimonials]
-  const duration = Math.max(22, testimonials.length * 5)
+  useEffect(() => {
+    if (testimonials.length === 0 && supabase) {
+      setLoading(true)
+      supabase
+        .from('testimonials')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(8)
+        .then(({ data, error }) => {
+          if (error) {
+            console.error('Client testimonials fetch error:', error)
+          } else {
+            setClientTestimonials(data || [])
+          }
+          setLoading(false)
+        })
+    }
+  }, [])
+
+  const displayTestimonials = testimonials.length > 0 ? testimonials : clientTestimonials
+
+  if (displayTestimonials.length === 0 && !loading) return null
+
+  const marqueeTestimonials = [...displayTestimonials, ...displayTestimonials]
+  const duration = Math.max(22, displayTestimonials.length * 5)
 
   return (
     <section className="overflow-hidden bg-background pt-4 pb-20 px-4 sm:px-6 lg:px-8">
@@ -47,13 +73,18 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
               repeat: Infinity,
             }}
           >
-            {marqueeTestimonials.map((testimonial, idx) => (
-              <TestimonialCard
-                key={`${testimonial.id}-${idx}`}
-                testimonial={testimonial}
-                index={idx}
-              />
-            ))}
+            {loading 
+              ? Array.from({ length: 8 }).map((_, idx) => (
+                  <div key={idx} className="flex h-64 w-80 shrink-0 animate-pulse rounded-2xl bg-muted/50" />
+                ))
+              : marqueeTestimonials.map((testimonial, idx) => (
+                  <TestimonialCard
+                    key={`${testimonial.id}-${idx}`}
+                    testimonial={testimonial}
+                    index={idx}
+                  />
+                ))
+            }
           </motion.div>
         </div>
       </div>

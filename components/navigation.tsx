@@ -25,18 +25,20 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2"
-            >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">O</span>
-              </div>
-              <div>
-                <div className="text-lg font-bold text-foreground">OBASSTEEL</div>
-                <div className="text-xs text-muted-foreground">PROJECT LIMITED</div>
-              </div>
-            </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-2"
+              >
+                <img 
+                  src="/logo-image.png" 
+                  alt="OBASSTEEL" 
+                  className="w-30 h-16 rounded-full object-contain border-2 border-accent/50"
+                />
+                <div>
+                  <div className="text-lg font-bold text-foreground">OBASSTEEL</div>
+                  <div className="text-xs text-muted-foreground">PROJECT LIMITED</div>
+                </div>
+              </motion.div>
           </Link>
 
           {/* Nav Items */}

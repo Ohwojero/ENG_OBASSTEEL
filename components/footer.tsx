@@ -42,7 +42,11 @@ export function Footer() {
           >
             <div className="mb-4">
               <h3 className="text-xl font-bold flex items-center gap-2">
-                <span className="w-8 h-8 rounded bg-accent flex items-center justify-center text-primary font-bold text-sm">O</span>
+                <img 
+                  src="/logo-image.png" 
+                  alt="OBASSTEEL" 
+                  className="w-10 h-10 rounded-full object-contain border-2 border-accent/50"
+                />
                 OBASSTEEL
               </h3>
               <p className="text-sm text-primary-foreground/80 mt-1">PROJECT LIMITED</p>
