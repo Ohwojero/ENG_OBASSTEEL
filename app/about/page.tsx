@@ -107,20 +107,20 @@ export default async function About() {
 
           <AboutReveal from="right" delay={0.08}>
             <div className="overflow-hidden rounded-[32px] border border-border/80 bg-card/50">
-              <div className="relative h-full min-h-[420px]">
+              <div className="relative min-h-[340px] md:min-h-[420px]">
                 <Image
                   src="/img2.jpeg"
                   alt="Eng OBASSTEEL"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-8">
-                  <div className="max-w-md rounded-[28px] border border-accent/20 bg-background/70 p-6 backdrop-blur-md">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent md:via-background/25" />
+                <div className="relative z-10 px-4 pt-[220px] pb-4 sm:px-6 md:absolute md:inset-x-0 md:bottom-0 md:px-8 md:pt-0 md:pb-8">
+                  <div className="w-full rounded-[24px] border border-accent/20 bg-background/82 p-5 backdrop-blur-md md:max-w-md md:rounded-[28px] md:p-6">
                     <div className="text-xs font-semibold uppercase tracking-[0.24em] text-accent">
                       Leadership
                     </div>
-                    <h3 className="mt-3 text-2xl font-bold text-foreground">
+                    <h3 className="mt-3 text-xl font-bold text-foreground md:text-2xl">
                       Eng OBASSTEEL
                     </h3>
                     <p className="mt-3 text-sm leading-7 text-muted-foreground">

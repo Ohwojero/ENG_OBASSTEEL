@@ -122,7 +122,11 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: idx * 0.06 }}
                 viewport={{ once: true }}
-                className="rounded-[28px] border border-border/75 bg-card/50 p-6 backdrop-blur-sm"
+                className={`rounded-[28px] p-6 backdrop-blur-sm ${
+                  card.title === 'Call Direct' || card.title === 'Email Us'
+                    ? 'border border-accent/45 bg-[linear-gradient(160deg,rgba(249,202,36,0.12),rgba(17,24,41,0.72))] shadow-[0_24px_80px_-40px_rgba(249,202,36,0.42)]'
+                    : 'border border-border/75 bg-card/50'
+                }`}
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 text-accent">
                   <Icon className="h-5 w-5" />
