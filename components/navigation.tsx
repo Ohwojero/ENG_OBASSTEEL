@@ -87,10 +87,10 @@ export function Navigation() {
               className="inline-flex items-center justify-center h-10 w-10 rounded-md border border-border bg-card/70 text-foreground"
             >
               <span className="sr-only">Toggle menu</span>
-              <div className="flex flex-col gap-1.5">
-                <span className={`h-0.5 w-6 bg-foreground transition-transform ${isOpen ? 'translate-y-2 rotate-45' : ''}`}></span>
+              <div className="flex flex-col gap-2.5">
+                <span className={`h-0.5 w-6 bg-foreground transition-transform ${isOpen ? 'translate-y-2.5 rotate-45' : ''}`}></span>
                 <span className={`h-0.5 w-6 bg-foreground transition-opacity ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`h-0.5 w-6 bg-foreground transition-transform ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}></span>
+                <span className={`h-0.5 w-6 bg-foreground transition-transform ${isOpen ? '-translate-y-2.5 -rotate-45' : ''}`}></span>
               </div>
             </motion.button>
           </div>
@@ -106,7 +106,7 @@ export function Navigation() {
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden overflow-hidden border-t border-border bg-background/98 backdrop-blur-md"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="px-4 py-8 space-y-10">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
                   <div className={`text-base font-medium ${isActive(item.href) ? 'text-accent' : 'text-foreground'}`}>
