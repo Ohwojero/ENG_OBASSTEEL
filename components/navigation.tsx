@@ -21,22 +21,22 @@ export function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 justify-center"
               >
                 <img 
                   src="/logo-image.png" 
                   alt="OBASSTEEL" 
-                  className="w-30 h-16 rounded-full object-contain border-2 border-accent/50"
+                  className="w-28 h-24 h-14 rounded-xl object-contain"
                 />
                 <div>
-                  <div className="text-lg font-bold text-foreground">OBASSTEEL</div>
-                  <div className="text-xs text-muted-foreground">PROJECT LIMITED</div>
+                  <div className="text-base font-bold text-foreground">OBASSTEEL</div>
+                  <div className="text-[10px] text-muted-foreground">PROJECT LIMITED</div>
                 </div>
               </motion.div>
           </Link>
