@@ -57,7 +57,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         className="project-detail-hero h-[24rem] pt-40 sm:h-[32rem] sm:pt-32 lg:h-[42rem] lg:pt-36"
       >
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 flex items-end p-5 pb-7 sm:p-8 lg:p-12">
+        <div className="absolute inset-0 flex items-center p-5 sm:items-end sm:p-8 lg:p-12">
           <div className="mx-auto w-full max-w-6xl">
             <div className="inline-block px-4 py-2 bg-accent/90 text-accent-foreground rounded-full text-sm font-bold mb-4">
               {project.category}
