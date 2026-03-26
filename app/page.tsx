@@ -3,8 +3,11 @@ import { Footer } from '@/components/footer'
 import { Hero } from '@/components/hero'
 import { ServicesSection } from '@/components/services-section'
 import { ProjectsSection } from '@/components/projects-section'
+import { ProjectVideosSection } from '@/components/project-videos-section'
 import { TestimonialsSection } from '@/components/testimonials-section'
 import { supabaseAdmin } from '@/lib/supabase-server'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 export const dynamic = 'force-dynamic'
 
@@ -56,10 +59,29 @@ async function getTestimonials() {
   }
 }
 
+async function getProjectVideos() {
+  try {
+    const videosDir = path.join(process.cwd(), 'public', 'videos')
+    const files = await fs.readdir(videosDir)
+
+    return files
+      .filter((file) => file.toLowerCase().endsWith('.mp4'))
+      .sort()
+      .map((file, index) => ({
+        title: `Project Video ${index + 1}`,
+        src: `/videos/${encodeURIComponent(file)}`,
+      }))
+  } catch (error) {
+    console.error('Failed to load project videos:', error)
+    return []
+  }
+}
+
 export default async function Home() {
-  const [services, projects, testimonials] = await Promise.all([
+  const [services, projects, videos, testimonials] = await Promise.all([
     getServices(),
     getProjects(),
+    getProjectVideos(),
     getTestimonials(),
   ])
 
@@ -69,6 +91,7 @@ export default async function Home() {
       <Hero />
       <ServicesSection services={services} />
       <ProjectsSection projects={projects} />
+      <ProjectVideosSection videos={videos} />
       <TestimonialsSection testimonials={testimonials} />
 
       <Footer />
