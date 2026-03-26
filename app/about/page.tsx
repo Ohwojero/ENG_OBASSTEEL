@@ -59,7 +59,7 @@ export default async function About() {
   ]
 
   return (
-    <main className="w-full bg-background">
+    <main className="w-full overflow-x-clip bg-background">
       <Navigation />
 
       <ParallaxHero
@@ -83,7 +83,7 @@ export default async function About() {
         </div>
       </ParallaxHero>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <AboutReveal from="left">
             <div className="rounded-[32px] border border-border/80 bg-card/55 p-8 backdrop-blur-sm md:p-10">
@@ -136,7 +136,7 @@ export default async function About() {
         </div>
       </section>
 
-      <section className="px-4 pb-8 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 xl:grid-cols-4">
           {highlights.map((item: {label: string; value: string; note: string}, idx: number) => (
             <AboutReveal
@@ -162,7 +162,7 @@ export default async function About() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
           <AboutReveal from="left">
             <div className="rounded-[32px] border border-border/80 bg-card/55 p-8 backdrop-blur-sm md:p-10">
@@ -192,7 +192,7 @@ export default async function About() {
         </div>
       </section>
 
-      <section className="px-4 py-8 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-2xl">
             <div className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -274,7 +274,7 @@ export default async function About() {
       </section>
 
       {team.length > 0 && (
-        <section className="px-4 py-20 sm:px-6 lg:px-8">
+        <section className="overflow-x-clip px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <div className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
