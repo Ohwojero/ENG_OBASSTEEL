@@ -81,7 +81,7 @@ export default async function Services() {
   ]
 
   return (
-    <main className="w-full overflow-x-hidden bg-background">
+    <main className="w-full overflow-x-clip bg-background">
       <Navigation />
 
       <ParallaxHero
@@ -105,7 +105,7 @@ export default async function Services() {
         </div>
       </ParallaxHero>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <AboutReveal from="left">
             <div className="rounded-[32px] border border-border/80 bg-card/55 p-8 backdrop-blur-sm md:p-10">
@@ -152,7 +152,7 @@ export default async function Services() {
         </div>
       </section>
 
-      <section className="overflow-x-hidden px-4 py-10 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
             <div className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
@@ -180,7 +180,7 @@ export default async function Services() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="overflow-x-clip px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-[36px] border border-accent/20 bg-[linear-gradient(160deg,rgba(39,60,117,0.58),rgba(17,24,41,0.95))] p-8 text-center backdrop-blur-sm md:p-12">
           <div className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
             Next Step

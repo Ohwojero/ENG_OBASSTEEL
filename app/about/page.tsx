@@ -136,7 +136,7 @@ export default async function About() {
 
       <section className="px-4 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {highlights.map((item, idx) => (
+          {highlights.map((item: {label: string; value: string; note: string}, idx: number) => (
             <AboutReveal
               key={item.label}
               from={idx % 2 === 0 ? 'left' : 'right'}
@@ -222,7 +222,7 @@ export default async function About() {
                   'Client-aligned project execution',
                   'Safety-governed decision making',
                   'Continuous performance improvement',
-                ].map((item, idx) => (
+                ].map((item: string, idx: number) => (
                     <AboutReveal key={item} from={idx % 2 === 0 ? 'left' : 'right'} delay={idx * 0.05}>
                       <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 backdrop-blur-sm">
                         <div className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
@@ -237,7 +237,7 @@ export default async function About() {
             </AboutReveal>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-            {values.map((value, idx) => (
+            {values.map((value: string, idx: number) => (
               <AboutReveal key={value} from={idx % 2 === 0 ? 'right' : 'left'} delay={idx * 0.08}>
                 <div
                   className={`group relative overflow-hidden rounded-[28px] p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/35 ${
@@ -284,7 +284,7 @@ export default async function About() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-              {team.map((member, idx) => (
+              {team.map((member: any, idx: number) => (
                 <AboutReveal
                   key={member.id}
                   from={idx % 2 === 0 ? 'left' : 'right'}

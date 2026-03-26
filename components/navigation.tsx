@@ -21,22 +21,24 @@ export function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="max-w-7xl mx-auto pl-0 pr-3 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 group">
+          <Link href="/" className="flex min-w-0 flex-1 items-center justify-start group md:flex-none">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 justify-center"
+                className="min-w-0 items-center justify-start gap-2 text-left sm:gap-3 flex"
               >
-                <img 
-                  src="/logo-image.png" 
-                  alt="OBASSTEEL" 
-                  className="w-28 h-24 h-14 rounded-xl object-contain"
-                />
-                <div>
-                  <div className="text-base font-bold text-foreground">OBASSTEEL</div>
-                  <div className="text-[10px] text-muted-foreground">PROJECT LIMITED</div>
+                <div className="ml-1 flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-white p-1.5 sm:h-14 sm:w-14 sm:p-1.5">
+                  <img 
+                    src="/favicon-logo.png" 
+                    alt="OBASSTEEL" 
+                    className="h-full w-full rounded-full object-contain"
+                  />
+                </div>
+                <div className="flex min-w-0 flex-col justify-center">
+                  <div className="text-sm font-bold leading-none text-foreground sm:text-base">OBASSTEEL</div>
+                  <div className="mt-1 text-[9px] leading-none text-muted-foreground sm:text-[10px]">PROJECT LIMITED</div>
                 </div>
               </motion.div>
           </Link>
@@ -78,7 +80,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="flex w-10 flex-shrink-0 justify-end md:hidden">
             <motion.button
               aria-label="Toggle menu"
               aria-expanded={isOpen}
@@ -106,10 +108,10 @@ export function Navigation() {
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden overflow-hidden border-t border-border bg-background/98 backdrop-blur-md"
           >
-            <div className="px-4 py-8 space-y-10">
+            <div className="space-y-3 px-4 py-8">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
-                  <div className={`text-base font-medium ${isActive(item.href) ? 'text-accent' : 'text-foreground'}`}>
+                  <div className={`rounded-lg px-1 py-2 text-base font-medium ${isActive(item.href) ? 'text-accent' : 'text-foreground'}`}>
                     {item.label}
                   </div>
                 </Link>

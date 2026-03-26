@@ -79,22 +79,22 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent"></div>
               </div>
-              <div className="relative z-10 p-6">
+              <div className="relative z-10 flex min-h-[200px] flex-col p-6 pb-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
                   {service.description}
                 </p>
+                <div className="mt-auto pt-6">
+                  <Link href="/services">
+                    <button className="w-full rounded-lg border border-accent bg-transparent px-4 py-2 text-sm font-semibold text-accent opacity-100 transition-all duration-300 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                      View Service
+                    </button>
+                  </Link>
+                </div>
               </div>
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/10 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
               <div className="pointer-events-none absolute -left-12 bottom-20 h-28 w-28 rounded-full bg-primary/20 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
               <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-transparent via-accent/40 to-transparent opacity-60"></div>
-              <div className="absolute left-6 right-6 bottom-6 z-10">
-                <Link href="/services">
-                  <button className="w-full px-4 py-2 text-sm font-semibold rounded-lg border border-accent text-accent bg-transparent opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    View Service
-                  </button>
-                </Link>
-              </div>
             </motion.div>
           ))}
         </div>

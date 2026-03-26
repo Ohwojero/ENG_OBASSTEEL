@@ -52,15 +52,15 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
       {/* Hero Section */}
       <ParallaxHero
         imageUrl={project.image_url || '/placeholder.jpg'}
-        className="h-96 pt-32"
+        className="h-[24rem] pt-32 sm:h-[32rem] sm:pt-32 lg:h-[42rem] lg:pt-36"
       >
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 flex items-end p-8">
-          <div className="max-w-6xl mx-auto w-full">
+        <div className="absolute inset-0 flex items-end p-5 sm:p-8 lg:p-12">
+          <div className="mx-auto w-full max-w-6xl">
             <div className="inline-block px-4 py-2 bg-accent/90 text-accent-foreground rounded-full text-sm font-bold mb-4">
               {project.category}
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">{project.title}</h1>
+            <h1 className="mb-4 max-w-4xl text-3xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl">{project.title}</h1>
             <p className="text-xl text-gray-200">📍 {project.location}</p>
           </div>
         </div>

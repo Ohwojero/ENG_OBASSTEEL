@@ -11,32 +11,31 @@ export const metadata: Metadata = {
   description: 'Leading oil & gas engineering company specializing in flow station operations, pipeline management, and industrial projects in Delta State, Nigeria.',
   keywords: 'oil and gas, engineering, flow station, pipeline, Nigeria, Delta State',
   authors: [{ name: 'OBASSTEEL PROJECT LIMITED' }],
-  openGraph: {
+ openGraph: {
     title: 'OBASSTEEL PROJECT LIMITED',
     description: 'Oil & Gas Engineering Excellence',
     type: 'website',
   },
- icons: {
-  icon: [
-    {
-      url: '/favicon-16x16.png',
-      sizes: '16x16',
-      type: 'image/png',
-    },
-    {
-      url: '/favicon-32x32.png',
-      sizes: '32x32',
-      type: 'image/png',
-    },
-  ],
-  apple: [
-    {
-      url: '/apple-touch-icon.png',
-      sizes: '180x180',
-      type: 'image/png',
-    },
-  ],
-},
+  icons: {
+    icon: [
+      {
+        url: '/favicon-logo.png',
+        type: 'image/png',
+      },
+    ],
+    shortcut: [
+      {
+        url: '/favicon-logo.png',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/favicon-logo.png',
+        type: 'image/png',
+      },
+    ],
+  },
 }
 
 export const viewport: Viewport = {

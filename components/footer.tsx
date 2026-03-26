@@ -39,17 +39,22 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="text-left"
           >
             <div className="mb-4">
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <img 
-                  src="/logo-image.png" 
-                  alt="OBASSTEEL" 
-                  className="w-10 h-10 rounded-full object-contain border-2 border-accent/50"
-                />
-                OBASSTEEL
-              </h3>
-              <p className="text-sm text-primary-foreground/80 mt-1">PROJECT LIMITED</p>
+              <div className="flex items-center justify-start gap-3">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-accent/50 bg-white p-1">
+                  <img 
+                    src="/favicon-logo.png" 
+                    alt="OBASSTEEL" 
+                    className="h-full w-full rounded-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <span className="text-xl font-bold leading-none">OBASSTEEL</span>
+                  <span className="mt-1 text-sm leading-none text-primary-foreground/80">PROJECT LIMITED</span>
+                </div>
+              </div>
             </div>
             <p className="text-sm text-primary-foreground/70 mb-4">
               Leading oil & gas engineering solutions in Nigeria
@@ -69,6 +74,7 @@ export function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               viewport={{ once: true }}
+              className="text-left"
             >
               <h4 className="font-bold mb-4 text-lg">{section.title}</h4>
               <ul className="space-y-2">
@@ -94,6 +100,7 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
+            className="text-left"
           >
             <h4 className="font-bold mb-4 text-lg">Get in Touch</h4>
             <p className="text-primary-foreground/80 text-sm mb-4">
@@ -115,9 +122,9 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 my-8"></div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/70">
+        <div className="flex flex-col items-start justify-between gap-4 text-left text-sm text-primary-foreground/70 md:flex-row md:items-center">
           <p>&copy; {currentYear} OBASSTEEL PROJECT LIMITED. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:gap-6">
             <Link href="/" className="hover:text-accent transition-colors">Privacy Policy</Link>
             <Link href="/" className="hover:text-accent transition-colors">Terms of Service</Link>
           </div>
