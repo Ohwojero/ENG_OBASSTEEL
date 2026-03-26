@@ -5,6 +5,8 @@ import { ProjectCard } from '@/components/project-card'
 import { AboutReveal } from '@/components/about-reveal'
 import { supabaseAdmin } from '@/lib/supabase-server'
 
+export const dynamic = 'force-dynamic'
+
 async function getProjects() {
   try {
     const { data, error } = await supabaseAdmin

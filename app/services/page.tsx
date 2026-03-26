@@ -5,6 +5,8 @@ import { ServiceCard } from '@/components/service-card'
 import { AboutReveal } from '@/components/about-reveal'
 import { supabaseAdmin } from '@/lib/supabase-server'
 
+export const dynamic = 'force-dynamic'
+
 async function getServices() {
   try {
     const { data, error } = await supabaseAdmin

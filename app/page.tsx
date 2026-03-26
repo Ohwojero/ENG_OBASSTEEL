@@ -6,6 +6,8 @@ import { ProjectsSection } from '@/components/projects-section'
 import { TestimonialsSection } from '@/components/testimonials-section'
 import { supabaseAdmin } from '@/lib/supabase-server'
 
+export const dynamic = 'force-dynamic'
+
 async function getServices() {
   try {
     const { data, error } = await supabaseAdmin

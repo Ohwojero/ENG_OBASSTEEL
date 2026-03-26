@@ -153,3 +153,11 @@
     background-size: contain;
   }
 }
+
+@media (max-width: 640px) {
+  .project-detail-hero {
+    background-position: 50% 18% !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+  }
+}

@@ -8,19 +8,9 @@ interface ServiceCardProps {
   index?: number
 }
 
-const serviceIcons: Record<string, string> = {
-  'Flow Station Operations': '🔧',
-  'Pipeline Management': '🛢️',
-  'Process Engineering': '⚙️',
-  'Separation Systems': '🔄',
-  'Construction & Fabrication': '🏗️',
-  'Safety & Compliance': '✅',
-}
-
 const fallbackImages = ['/img3.jpeg', '/img4.jpeg', '/img5.jpeg', '/img6.jpeg', '/img7.jpeg', '/img8.jpeg']
 
 export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
-  const fallbackIcon = serviceIcons[service.title] || '⚡'
   const imageSrc = service.icon_url || fallbackImages[index % fallbackImages.length]
 
   return (
@@ -40,9 +30,6 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-          <div className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-accent/30 bg-background/70 text-2xl text-accent backdrop-blur-md">
-            {service.icon_url ? '◉' : fallbackIcon}
-          </div>
         </div>
 
         <div className="flex flex-1 flex-col p-7">

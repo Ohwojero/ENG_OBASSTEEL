@@ -5,6 +5,8 @@ import { AboutReveal } from '@/components/about-reveal'
 import { supabaseAdmin } from '@/lib/supabase-server'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+
 async function getSettings() {
   try {
     const { data, error } = await supabaseAdmin

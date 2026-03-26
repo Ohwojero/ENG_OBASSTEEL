@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ParallaxHero } from '@/components/parallax-hero'
 
+export const dynamic = 'force-dynamic'
+
 async function getProject(slug: string) {
   try {
     const { data, error } = await supabaseAdmin
@@ -52,7 +54,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
       {/* Hero Section */}
       <ParallaxHero
         imageUrl={project.image_url || '/placeholder.jpg'}
-        className="h-[24rem] pt-32 sm:h-[32rem] sm:pt-32 lg:h-[42rem] lg:pt-36"
+        className="project-detail-hero h-[24rem] pt-32 sm:h-[32rem] sm:pt-32 lg:h-[42rem] lg:pt-36"
       >
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 flex items-end p-5 sm:p-8 lg:p-12">
