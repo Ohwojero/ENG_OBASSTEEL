@@ -58,37 +58,42 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 className="h-10 w-10 rounded-full border border-border bg-background/80 transition-colors hover:bg-muted/40"
                 aria-label="Previous slide"
               >
-                ←
+                &larr;
               </button>
               <button
                 onClick={scrollNext}
                 className="h-10 w-10 rounded-full border border-border bg-background/80 transition-colors hover:bg-muted/40"
                 aria-label="Next slide"
               >
-                →
+                &rarr;
               </button>
             </div>
           </div>
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6">
+            <div className="flex items-stretch gap-6">
               {slides.map((slide, idx) => (
-                <div key={slide.id} className="min-w-[280px] sm:min-w-[360px] lg:min-w-[420px]">
+                <div
+                  key={slide.id}
+                  className="flex min-w-[300px] sm:min-w-[380px] lg:min-w-[460px]"
+                >
                   <button
                     type="button"
                     onClick={() => setActiveIndex(idx)}
-                    className="group relative w-full overflow-hidden rounded-2xl border border-border bg-card/50 text-left backdrop-blur-sm"
+                    className="group relative flex min-h-[24rem] w-full flex-col overflow-hidden rounded-2xl border border-border bg-card/50 text-left backdrop-blur-sm"
                   >
-                    <div className="h-60 w-full overflow-hidden">
+                    <div className="h-72 w-full overflow-hidden sm:h-80">
                       <img
                         src={slide.image}
                         alt={slide.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-5">
-                      <div className="text-lg font-semibold text-foreground">{slide.title}</div>
+                    <div className="flex flex-1 flex-col justify-between p-5">
+                      <div className="min-h-[3.5rem] text-lg font-semibold text-foreground">
+                        {slide.title}
+                      </div>
                       <div className="mt-2 inline-flex items-center text-sm font-semibold text-accent">
-                        View More →
+                        View More &rarr;
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -120,7 +125,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               onClick={() => setActiveIndex(null)}
               aria-label="Close"
             >
-              ×
+              &times;
             </button>
             <button
               type="button"
@@ -132,7 +137,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               }
               aria-label="Previous"
             >
-              ‹
+              &#8249;
             </button>
             <button
               type="button"
@@ -144,7 +149,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               }
               aria-label="Next"
             >
-              ›
+              &#8250;
             </button>
             <div className="mt-3 text-center text-sm text-white/80">{slides[activeIndex].title}</div>
           </div>
