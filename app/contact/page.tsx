@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Clock3, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 
+const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT
+
 const contactCards = [
   {
     title: 'Office Address',
@@ -61,6 +63,7 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -73,14 +76,41 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError('')
+    setSubmitSuccess(false)
 
     try {
-      console.log('Form submission:', formData)
+      if (!formspreeEndpoint) {
+        throw new Error('Formspree endpoint is not configured.')
+      }
+
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          _subject: `New contact form message from ${formData.name}`,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.errors?.[0]?.message || result.error || 'Failed to send message.')
+      }
+
       setSubmitSuccess(true)
       setFormData({ name: '', email: '', phone: '', message: '' })
       setTimeout(() => setSubmitSuccess(false), 5000)
     } catch (error) {
       console.error('Error submitting form:', error)
+      setSubmitError(error instanceof Error ? error.message : 'Failed to send message.')
     } finally {
       setIsSubmitting(false)
     }
@@ -279,6 +309,12 @@ export default function Contact() {
               {submitSuccess && (
                 <div className="rounded-xl border border-green-500/40 bg-green-500/10 px-4 py-3 text-sm text-green-400">
                   Message sent successfully.
+                </div>
+              )}
+
+              {submitError && (
+                <div className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                  {submitError}
                 </div>
               )}
 

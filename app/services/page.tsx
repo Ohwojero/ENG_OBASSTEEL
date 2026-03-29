@@ -30,43 +30,6 @@ export const metadata = {
 export default async function Services() {
   const services = await getServices()
 
-  const defaultServices = [
-    {
-      title: 'Flow Station Operations & Maintenance',
-      description: 'Complete operational support and maintenance for flow stations including equipment monitoring, troubleshooting, and optimization.',
-    },
-    {
-      title: 'Process Engineering & Optimization',
-      description: 'Advanced engineering solutions to improve efficiency, reduce downtime, and optimize your production processes.',
-    },
-    {
-      title: 'Pipeline & Facility Management',
-      description: 'Expert management of pipeline infrastructure and industrial facilities with focus on safety and compliance.',
-    },
-    {
-      title: 'Separation Systems',
-      description: 'Design and implementation of advanced separation systems for efficient oil, gas, and water separation.',
-    },
-    {
-      title: 'Construction & Fabrication',
-      description: 'Full-scale construction and fabrication services for industrial structures and equipment.',
-    },
-    {
-      title: 'Safety & Compliance',
-      description: 'Comprehensive safety programs and regulatory compliance solutions meeting international standards.',
-    },
-  ]
-
-  const servicesData = services.length > 0 ? services : defaultServices.map((s, i) => ({
-    id: String(i),
-    title: s.title,
-    description: s.description,
-    icon_url: null,
-    order: i,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  }))
-
   const servicePillars = [
     {
       title: 'Field Execution',
@@ -168,17 +131,31 @@ export default async function Services() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {servicesData.map((service, idx) => (
-              <AboutReveal
-                key={service.id}
-                from={idx % 2 === 0 ? 'left' : 'right'}
-                delay={idx * 0.06}
-              >
-                <ServiceCard service={service} index={idx} />
-              </AboutReveal>
-            ))}
-          </div>
+          {services.length > 0 ? (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+              {services.map((service, idx) => (
+                <AboutReveal
+                  key={service.id}
+                  from={idx % 2 === 0 ? 'left' : 'right'}
+                  delay={idx * 0.06}
+                >
+                  <ServiceCard service={service} index={idx} />
+                </AboutReveal>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-[30px] border border-border/75 bg-card/45 p-10 text-center backdrop-blur-sm">
+              <div className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+                No Services Published
+              </div>
+              <h3 className="mt-4 text-3xl font-bold text-foreground">
+                The service portfolio is currently empty.
+              </h3>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
+                Services added from the admin dashboard will appear here automatically once they are created.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
