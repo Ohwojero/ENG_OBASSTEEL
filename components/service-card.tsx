@@ -22,8 +22,8 @@ export function ServiceCard({ service, index = 0 }: ServiceCardProps) {
       whileHover={{ y: -10 }}
       className="group relative h-full"
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-[30px] border border-border/75 bg-card/55 backdrop-blur-sm transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_28px_90px_-46px_rgba(0,0,0,0.65)]">
-        <div className="relative h-64 overflow-hidden sm:h-72">
+      <div className="flex h-full min-h-[34rem] flex-col overflow-hidden rounded-[30px] border border-border/75 bg-card/55 backdrop-blur-sm transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_28px_90px_-46px_rgba(0,0,0,0.65)]">
+        <div className="relative h-72 overflow-hidden sm:h-80">
           <img
             src={imageSrc}
             alt={service.title}

@@ -30,7 +30,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
 
         {/* Services Grid (3 featured cards) */}
         {services.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 gap-6 mb-12 md:grid-cols-3">
             {services.slice(0, 3).map((service, idx) => (
               <motion.div
                 key={service.id}
@@ -38,9 +38,9 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm min-h-[460px]"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm min-h-[540px]"
               >
-                <div className="relative h-60 w-full overflow-hidden">
+                <div className="relative h-72 w-full overflow-hidden sm:h-80">
                   <img
                     src={service.icon_url || (idx === 0 ? '/img3.jpeg' : idx === 1 ? '/img4.jpeg' : '/img5.jpeg')}
                     alt={service.title}
@@ -48,7 +48,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent"></div>
                 </div>
-                <div className="relative z-10 flex min-h-[200px] flex-col p-6 pb-6">
+                <div className="relative z-10 flex min-h-[220px] flex-col p-6 pb-6">
                   <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
                     {service.description}
